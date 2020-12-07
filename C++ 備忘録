@@ -1,0 +1,38 @@
+vectorをコピーする際は以下のコマンド
+copy(a.begin(),a.end(),b.begin());
+
+三考演算子
+条件式 ? 真のときの値 : 偽のときの値;
+
+小数点以下10桁まで
+printf("%.10f\n",変数)
+000006みたいな感じ
+printf("%06d",変数);
+
+ワーシャルフロイド
+rep(k,10)rep(i,10)rep(j,10) mins(c[i][j],c[i][k]+c[k][j]);
+
+二分探索（l：最小,r：最大）
+while (r-l > 1) {
+    ll c = (l+r)/2;
+    if (f(c) <= x) l = c; else r = c;
+  }
+  b[i]より小さい数の個数と大きい数の個数
+  ll s=lower_bound(all(a),b[i])-a.begin();
+  ll g=c.end()-upper_bound(all(c),b[i]);
+
+  BFS木：168 D問題
+
+  優先度付きキュー（最小値）
+  priority_queue<int, vector<int>, greater<int>> pq;
+
+文字列の挿入
+  s1.insert(3, "IN")
+
+右端でソート
+sort(all(u), [](P a, P b) {
+  return a.second < b.second;});
+  
+xor の勉強しときたい。
+復習するべき問題
+12 15 23 26 41 86 C. H and V C. Multiplication 3 白昼夢 Skill Up
