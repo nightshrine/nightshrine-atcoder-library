@@ -1,5 +1,18 @@
 {
     "files.associations": {
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "chrono": "cpp",
+        "random": "cpp",
+        "limits": "cpp",
+        "valarray": "cpp",
+        "bitset": "cpp",
+        "iosfwd": "cpp",
+        "all": "cpp",
+        "internal_bit": "cpp",
+        "twosat": "cpp",
+        "fenwicktree": "cpp"
     }
 }

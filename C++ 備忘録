@@ -33,6 +33,43 @@ while (r-l > 1) {
 sort(all(u), [](P a, P b) {
   return a.second < b.second;});
   
-xor の勉強しときたい。
+アフィン変換
+メモ化再帰
+
 復習するべき問題
-12 15 23 26 41 86 C. H and V C. Multiplication 3 白昼夢 Skill Up
+12 15 23 26 41 86 C. H and V 白昼夢 Skill Up   67 68 79 90 91 95
+
+普通の配列を初期化する方法（例）
+G.assign(N, vector<P>());
+
+空白も読み込みたい時
+getline(cin,s);
+
+んで空白を含んだ文字列を空白ごとに分けたい時
+
+int main() {
+    // 空白含めて一行読み込んで line に格納する
+    string line;
+    getline(cin, line);
+​
+    // cin の string から読み取る版 (input-string-stream)
+    istringstream iss(line);
+​
+    // line を空白区切りで block に入力する
+    // line の終端に達したときに ss >> block は false を返す
+    string block;
+    while (iss >> block) {
+        cout << block << endl;
+    }
+​
+    return 0;
+}
+
+二番目の要素でsort
+sort(v.begin(), v.end(), [](auto &left, auto &right) {
+    return left.second < right.second;
+});
+
+VSC update command
+wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb
+sudo dpkg -i /tmp/code_latest_amd64.deb
