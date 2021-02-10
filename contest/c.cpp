@@ -105,27 +105,4 @@ mint choose(int n,int a){mint x=1,y=1;rep(i,a){x*=n-i;y*=i+1;}return x/y;}
 ll xs/*xorsum*/(ll n){ll cnt=(n+1)/2;ll ans=cnt%2;if(n%2==0) ans^=n;return ans;}
 
 int main() {
-    int n,m;cin>>n>>m;
-    vi a(m),b(m);
-    rep(i,m) cin>>a[i]>>b[i];
-    int k;cin>>k;
-    vi c(k),d(k);
-    rep(i,k) cin>>c[i]>>d[i];
-    int cnt=0;
-    rep(i,(1<<k)){
-        int now=0;
-        vi sum(n);
-        for(int bit=0;bit<k;bit++){
-            if(1<<bit&i){
-                sum[c[bit]-1]++;
-            }else{
-                sum[d[bit]-1]++;
-            }
-        }
-        rep(i,m){
-            if(sum[a[i]-1]&&sum[b[i]-1]) now++;
-        }
-        maxs(cnt,now);
-    }
-    cout<<cnt<<endl;
 }

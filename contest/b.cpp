@@ -105,12 +105,4 @@ mint choose(int n,int a){mint x=1,y=1;rep(i,a){x*=n-i;y*=i+1;}return x/y;}
 ll xs/*xorsum*/(ll n){ll cnt=(n+1)/2;ll ans=cnt%2;if(n%2==0) ans^=n;return ans;}
 
 int main() {
-    int n,s,d;cin>>n>>s>>d;
-    bool ju=false;
-    rep(i,n){
-        int x,y;cin>>x>>y;
-        if(x>=s||y<=d) continue;
-        ju=true;
-    }
-    if(ju) yn;
 }

@@ -105,22 +105,4 @@ mint choose(int n,int a){mint x=1,y=1;rep(i,a){x*=n-i;y*=i+1;}return x/y;}
 ll xs/*xorsum*/(ll n){ll cnt=(n+1)/2;ll ans=cnt%2;if(n%2==0) ans^=n;return ans;}
 
 int main() {
-    int a,b,c;cin>>a>>b>>c;
-    if(c){
-        if(b>a){
-            cout<<"Aoki"<<endl;
-            return 0;
-        }else{
-            cout<<"Takahashi"<<endl;
-            return 0;
-        }
-    }else{
-        if(a<=b){
-            cout<<"Aoki"<<endl;
-            return 0;
-        }else{
-            cout<<"Takahashi"<<endl;
-            return 0;
-        }
-    }
 }

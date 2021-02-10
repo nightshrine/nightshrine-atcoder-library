@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <atcoder/all>
 #define rep(i,n) for(ll i=0;i<(n);i++)
 #define rrep(i,n) for(ll i = 1; i <= (n); ++i)
 #define drep(i,n) for(ll i = (n)-1; i >= 0; --i)
@@ -12,6 +13,7 @@
 #define v(T) vector<T>
 #define vv(T) vector<vector<T>>
 using namespace std;
+using namespace atcoder;
 typedef long long ll;
 typedef pair<ll,ll> P;
 typedef vector<int> vi;
@@ -104,5 +106,23 @@ mint f2(ll n) {if (n == 0) return 1;mint x = f2(n/2);x *= x;if (n%2 == 1) x *= 2
 mint choose(int n,int a){mint x=1,y=1;rep(i,a){x*=n-i;y*=i+1;}return x/y;}
 ll xs/*xorsum*/(ll n){ll cnt=(n+1)/2;ll ans=cnt%2;if(n%2==0) ans^=n;return ans;}
 
-int main(){
+int main() {
+  int n;
+  cin >> n;
+  vector<int> a(n);
+  rep(i,n) cin >> a[i];
+  
+  ll ans = 0;
+  fenwick_tree<int> t(n);
+  rep(i,n) {
+    ans += t.sum(a[i], n);// t[a[i]]からt[n-1]までの和
+    t.add(a[i], 1);//t[a[i]]を1にする。
+  }
+ 
+  rep(k,n) {
+    cout << ans << endl;
+    ans -= a[k];
+    ans += n-1-a[k];
+  }
+  return 0;
 }
