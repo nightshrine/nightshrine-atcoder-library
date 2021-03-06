@@ -2,6 +2,7 @@
 #define rep(i,n) for(ll i=0;i<(n);i++)
 #define rrep(i,n) for(ll i = 1; i <= (n); ++i)
 #define drep(i,n) for(ll i = (n)-1; i >= 0; --i)
+#define srep(i,s,t) for (int i = s; i < t; ++i)
 #define all(v) v.begin(),v.end()
 #define len(x) (ll)(x).length()
 #define maxs(x,y) x = max(x,y)
@@ -15,10 +16,12 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll,ll> P;
 typedef vector<int> vi;
+typedef vector<double> vd;
 typedef vector<string> vs;
 typedef vector<vi> vvi;
 typedef vector<ll> vl;
 typedef vector<vl> vvl;
+typedef vector<vd> vvd;
 typedef vector<P> vp;
 ll gcd(ll a,ll b){if(a%b==0){return b;}else{return(gcd(b,a%b));}}
 ll lcm(ll a,ll b){return a/gcd(a,b)*b;}
@@ -68,20 +71,6 @@ struct mint {
 };
 istream& operator>>(istream& is, const mint& a) { return is >> a.x;}
 ostream& operator<<(ostream& os, const mint& a) { return os << a.x;}
-struct combination {
-    vector<mint> fact, ifact;
-    combination(int n):fact(n+1),ifact(n+1) {
-        assert(n < mod);
-        fact[0] = 1;
-        for (int i = 1; i <= n; ++i) fact[i] = fact[i-1]*i;
-        ifact[n] = fact[n].inv();
-        for (int i = n; i >= 1; --i) ifact[i-1] = ifact[i]*i;
-    }
-    mint operator()(int n, int k) {
-        if (k < 0 || k > n) return 0;
-        return fact[n]*ifact[k]*ifact[n-k];
-    }
-} c(200005);
 struct UnionFind {
     vector<int> d;
     UnionFind(int n): d(n,-1) {}
@@ -102,7 +91,31 @@ struct UnionFind {
 };
 mint f2(ll n) {if (n == 0) return 1;mint x = f2(n/2);x *= x;if (n%2 == 1) x *= 2;return x;}
 mint choose(int n,int a){mint x=1,y=1;rep(i,a){x*=n-i;y*=i+1;}return x/y;}
-ll xs/*xorsum*/(ll n){ll cnt=(n+1)/2;ll ans=cnt%2;if(n%2==0) ans^=n;return ans;}
+ll xs/*xorsum nまでのxorの和*/(ll n){ll cnt=(n+1)/2;ll ans=cnt%2;if(n%2==0) ans^=n;return ans;}
+ll Fa/*Factorial nの階乗*/(ll n){ll ans=1;rrep(i,n){ans*=i;}return ans;}
 
-int main(){
+int l[1500050];
+
+int main() {
+    int n,m;cin>>n>>m;
+    vi a(n); rep(i,n) cin>>a[i];
+    rep(i,m){
+        l[a[i]]++;
+    }
+    int ans;
+    int ij=0;
+    while(true){
+        if(l[ij]==0) {
+            ans=ij;
+            break;
+        }
+        ij++;
+    }
+    rep(i,n-m){
+        l[a[i]]--;
+        l[a[i+m]]++;
+        if(a[i]<ans&&l[a[i]]==0) ans=a[i];
+    }
+    cout<<ans<<endl;
+    return 0;
 }
